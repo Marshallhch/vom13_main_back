@@ -6,7 +6,7 @@
   header('Access-Control-Allow-Headers: Access_Control-Allow_headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-Width');
 
   include $_SERVER["DOCUMENT_ROOT"].'/connect/db_conn.php';
-  include $_SERVER["DOCUMENT_ROOT"].'/main_project_vom13/baexang_back/register/register.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/baexang_back/register/register.php';
 
   $msg = [];
 
