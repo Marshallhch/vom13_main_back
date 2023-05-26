@@ -14,6 +14,10 @@
     public $pr_reg;
     public $pr_ID;
 
+    public $cate;
+    public $sort;
+    public $limit;
+
     public function __construct($db){
       $this->conn = $db;
     }
@@ -30,7 +34,9 @@
 
       $stmt = $this->conn->prepare($sql);
 
-      $this->pr_img   = htmlspecialchars(strip_tags($this->pr_img));
+      
+      $this->pr_img   = "https://www.dabipyeung.com/baexang_front/images/".$this->table.'/'.htmlspecialchars(strip_tags($this->pr_img));
+
       $this->pr_ttl   = htmlspecialchars(strip_tags($this->pr_ttl));  
       $this->pr_wt_en = htmlspecialchars(strip_tags($this->pr_wt_en));
       $this->pr_wt_kr = htmlspecialchars(strip_tags($this->pr_wt_kr));
@@ -51,6 +57,27 @@
       $result = $stmt->execute();
 
       return $result ? true : false;
+    }
+
+    public function get_products(){
+      if($this->cate == 'all'){
+        if($this->sort == 'new'){
+          $sql = "SELECT * FROM (SELECT * FROM bx_pp UNION SELECT * FROM bx_dp) AS union_table".$this->pr_ID." ORDER BY bx_idx DESC".$this->limit; 
+        } else if ($this->sort == 'best'){
+          $sql = "SELECT * FROM (SELECT * FROM bx_pp UNION SELECT * FROM bx_dp) AS union_table".$this->pr_ID." ORDER BY bx_hit DESC".$this->limit;
+        } else {
+          $sql = "SELECT * FROM (SELECT * FROM bx_pp UNION SELECT * FROM bx_dp) AS union_table".$this->pr_ID.$this->limit; // 서브 쿼리 : union은 컬럼명과 갯수가 같아야 한다.
+        }
+        echo $sql;
+      } else {
+        if($this->limit = '' && !$this->pr_ID == ''){
+          
+        }
+      }
+      // echo $this->cate;
+      // echo $this->sort;
+      // echo $this->pr_ID;
+      // echo $this->limit;
     }
   }
 
