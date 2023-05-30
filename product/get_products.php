@@ -43,9 +43,9 @@
           'pr_wt_en' => $row['bx_wt_en'],
           'pr_wt_kr' => $row['bx_wt_kr'],
           'pr_pri' => $row['bx_pri'],
-          'pr_deg' => $row['bx_reg'],
-          'pr_Isc' => $row['bx_desc'],
-          'pr_reD' => $row['bx_ID'],
+          'pr_reg' => $row['bx_reg'],
+          'pr_desc' => $row['bx_desc'],
+          'pr_ID' => $row['bx_ID'],
           'pr_hit' => $row['bx_hit']
         ];
         array_push($pr_arr, $pr_info);
@@ -59,4 +59,5 @@
   // select * from (select * from bx_dp) as dp where bx_ID=842970 order by bx_idx desc limit 4;
   // SELECT * FROM bx_pp UNION SELECT * FROM bx_dp WHERE bx_ID=358448 LIMIT 4;
 
+  
 ?>
